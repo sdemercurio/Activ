@@ -22,8 +22,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false,
 });
 
-app.use(require("./routes/html.js"));
-app.use(require("./routes/api"));
+app.use(require("./routes/htmlRoutes.js"));
+app.use(require("./routes/apiRoutes"));
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
