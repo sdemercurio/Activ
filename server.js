@@ -13,6 +13,8 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/aktiv", {
   useNewUrlParser: true,
+  useFindAndModify: false,
+  useCreateIndex: true,
   useFindAndModify: false
 });
 
