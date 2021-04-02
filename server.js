@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost/deep-thoughts',
+  process.env.MONGODB_URI || 'mongodb://localhost/aktiv',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -16,10 +16,10 @@ mongoose.connect(
   }
 );
 
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", () => {
-  app.listen(PORT, () =>
-    console.log(`App listening on http://localhost:${PORT}`)
-  );
+// routes
+app.use(require("./routes/apiRoutes.js"));
+app.use(require("./routes/htmlRoutes.js"));
+
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
 });
