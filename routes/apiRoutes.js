@@ -1,14 +1,17 @@
-const router = require("express").Router();
-const Workout = require("../models/workouts");
+const routes = (app) => {
+    app.route('/exercise')
+        .get((req, res) =>
+            res.send('GET request successful'))
 
-router.post("/api/workout", ({ body }, res) => {
-    Workout.create(body)
-    .then(dbWorkout => {
-        res.json(dbWorkout);
-    })
-    .catch(err => {
-        res.status(400).json(err);
-    });
-}); 
+        .post((req, res) =>
+        res.send('POST request successful'))    
 
-module.exports = router; 
+    app.route('/exercise/:id')
+        .put((req, res) =>
+        res.send('PUT request successful'))
+
+        .delete((req, res) =>
+        res.send('DELETE request successful'))
+}
+
+module.exports = routes;
