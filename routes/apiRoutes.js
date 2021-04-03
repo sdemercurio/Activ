@@ -1,17 +1,44 @@
-const routes = (app) => {
-    app.route('/exercise')
-        .get((req, res) =>
-            res.send('GET request successful'))
+const router = require("express").Router();
+const Workout = require("../models/workouts.js");
 
-        .post((req, res) =>
-        res.send('POST request successful'))    
+router.get("/api/workouts", (req, res) => {
+    Workout.find()
+        .then(dbWorkouts => {
+            res.json(dbWorkouts);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
 
-    app.route('/exercise/:id')
-        .put((req, res) =>
-        res.send('PUT request successful'))
+router.get("/api/workouts/range", (req, res) => {
+    Workout.find().limit(7)
+        .then(dbWorkouts => {
+            res.json(dbWorkouts);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+router.post("/api/workouts", (req, res) => {
+    Workout.create({})
+        .then(dbWorkouts => {
+            res.json(dbWorkouts);
+        })
+        .catch(err => {
+            res.json(err);
+        });
+});
+router.put("/api/workouts/:id", (req, res) => {
+    Workout.findByIdAndUpdate(req.params.id,
+        { "$push": { "exercises": req.body } })
+        .then(dbWorkouts => {
+            res.json(dbWorkouts)
+        })
+        .catch(err => {
+            res.json(err);
+        })
 
-        .delete((req, res) =>
-        res.send('DELETE request successful'))
-}
+})
 
-module.exports = routes;
+module.exports = router;
