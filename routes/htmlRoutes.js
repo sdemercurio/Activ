@@ -5,11 +5,12 @@ const path = require("path");
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../public/index.html"));
   });
-//route to display exercise.html
+
+// display exercise.html
 router.get("/exercise", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/exercise.html"));
 });
-//route to display stats.html
+// display stats.html
 router.get("/stats", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/stats.html"));
 });
