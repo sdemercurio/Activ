@@ -17,7 +17,7 @@ The user is able to:
 * View the total duration of each workout from the past seven workouts on the 
 
 # Demo
-![/public/img/aktiv demo](img/aktiv-demo.gif)
+![aktiv demo](public/img/aktiv-demo.gif)
 
 
 ## Links to Repo and Heroku
