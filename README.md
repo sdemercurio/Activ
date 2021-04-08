@@ -16,6 +16,9 @@ The user is able to:
 * View the combined weight of multiple exercises from the past seven workouts on the stats page.
 * View the total duration of each workout from the past seven workouts on the 
 
+# Demo
+![aktiv demo](./img/aktiv-demo.gif)
+
 
 ## Links to Repo and Heroku
 * [GitHub Repository](https://github.com/sdemercurio/aktiv.git)
